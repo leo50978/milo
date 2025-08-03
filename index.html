@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJD - Académie des Visionnaires | Former aujourd'hui, inspirer demain</title>
+    <meta name="description"
+        content="L'Académie des Visionnaires forme les leaders de demain. Découvrez nos formations en leadership, éducation financière et développement personnel.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom clip-path effects */
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .clip-wave {
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+        }
+
+        /* Gradient overlays */
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.8));
+        }
+
+        /* Custom animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        /* Hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Focus styles for accessibility */
+        button:focus, a:focus, input:focus, textarea:focus, select:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-hidden {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .mobile-menu-visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Smooth transitions */
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 200ms;
+        }
+
+        /* Better contrast for accessibility */
+        .text-blue-100 {
+            color: #dbeafe;
+        }
+
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 leading-relaxed">
+
+    <!-- Header Navigation (Sticky) -->
+<header class="fixed top-0 w-full bg-white backdrop-blur-sm border-b border-gray-800 z-50 shadow-lg transition-all duration-300" id="header">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="#accueil" class="flex items-center group focus:outline-none">
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
+                        <img src="image.png" width="40" height="40" alt="Logo AJD" class="rounded-lg">
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-200">AJD</span>
+                </a>
+            </div>
+            
+            <!-- Navigation desktop -->
+            <div class="hidden lg:flex lg:items-center lg:justify-center lg:space-x-1 flex-1 mx-8">
+                <a href="#accueil" class="px-4 py-2 text-sm font-medium text-black hover:text-blue rounded-md relative group transition-colors duration-200 focus:outline-none">
+                    Accueil
+                    <span class="absolute inset-x-1 bottom-0 h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="#apropos" class="px-4 py-2 text-sm font-medium text-black hover:text-blue rounded-md relative group transition-colors duration-200 focus:outline-none">
+                    À propos
+                    <span class="absolute inset-x-1 bottom-0 h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="#formations" class="px-4 py-2 text-sm font-medium text-black hover:text-blue rounded-md relative group transition-colors duration-200 focus:outline-none">
+                    Formations
+                    <span class="absolute inset-x-1 bottom-0 h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="#témoignages" class="px-4 py-2 text-sm font-medium text-black hover:text-blue rounded-md relative group transition-colors duration-200 focus:outline-none">
+                    Témoignages
+                    <span class="absolute inset-x-1 bottom-0 h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="#blog" class="px-4 py-2 text-sm font-medium text-black hover:text-blue rounded-md relative group transition-colors duration-200 focus:outline-none">
+                    Blog
+                    <span class="absolute inset-x-1 bottom-0 h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="#contact" class="px-4 py-2 text-sm font-medium text-black hover:text-blue rounded-md relative group transition-colors duration-200 focus:outline-none">
+                    Contact
+                    <span class="absolute inset-x-1 bottom-0 h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+            </div>
+            
+            <!-- CTA et réseaux sociaux -->
+            <div class="hidden lg:flex lg:items-center lg:space-x-6">
+                <div class="flex space-x-4">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="text-gray-400 hover:text-blue-400 transition-colors duration-200 focus:outline-none">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="text-gray-400 hover:text-blue-400 transition-colors duration-200 focus:outline-none">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:text-blue-400 transition-colors duration-200 focus:outline-none">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+                <button onclick="ouvrirFormEcoleZed123()" class="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 py-2 rounded-md font-medium transition-all duration-300 transform hover:scale-[1.02] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    S'inscrire
+                </button>
+            </div>
+            
+            <!-- Bouton menu mobile -->
+            <button class="lg:hidden p-2 -mr-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500" id="mobile-menu-btn" aria-expanded="false" aria-label="Menu">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Nouveau Menu mobile - Style moderne -->
+    <div class="lg:hidden fixed inset-0 z-50 hidden" id="mobile-menu">
+        <div class="fixed inset-0 bg-gray-900/80 transition-opacity duration-300" id="mobile-menu-overlay"></div>
+        <div class="fixed bottom-0 left-0 right-0 bg-gray-800 rounded-t-2xl shadow-xl transform transition-transform duration-300 ease-in-out translate-y-full" id="mobile-menu-panel">
+            <div class="flex flex-col">
+                <!-- Bouton fermer -->
+                <div class="flex justify-end p-4">
+                    <button id="mobile-menu-close" class="p-2 text-gray-400 hover:text-white rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="px-6 pb-6 space-y-4">
+                    <a href="#accueil" class="block px-4 py-3 rounded-lg text-lg font-medium text-white bg-gray-700/50 transition-colors duration-200 focus:outline-none focus:bg-gray-700">
+                        <div class="flex items-center">
+                            <i class="fas fa-home mr-3 text-blue-400"></i>
+                            Accueil
+                        </div>
+                    </a>
+                    <a href="#apropos" class="block px-4 py-3 rounded-lg text-lg font-medium text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200 focus:outline-none focus:bg-gray-700">
+                        <div class="flex items-center">
+                            <i class="fas fa-info-circle mr-3 text-blue-400"></i>
+                            À propos
+                        </div>
+                    </a>
+                    <a href="#formations" class="block px-4 py-3 rounded-lg text-lg font-medium text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200 focus:outline-none focus:bg-gray-700">
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap mr-3 text-blue-400"></i>
+                            Formations
+                        </div>
+                    </a>
+                    <a href="#témoignages" class="block px-4 py-3 rounded-lg text-lg font-medium text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200 focus:outline-none focus:bg-gray-700">
+                        <div class="flex items-center">
+                            <i class="fas fa-comments mr-3 text-blue-400"></i>
+                            Témoignages
+                        </div>
+                    </a>
+                    <a href="#blog" class="block px-4 py-3 rounded-lg text-lg font-medium text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200 focus:outline-none focus:bg-gray-700">
+                        <div class="flex items-center">
+                            <i class="fas fa-newspaper mr-3 text-blue-400"></i>
+                            Blog
+                        </div>
+                    </a>
+                    <a href="#contact" class="block px-4 py-3 rounded-lg text-lg font-medium text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200 focus:outline-none focus:bg-gray-700">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            Contact
+                        </div>
+                    </a>
+                </nav>
+                
+                <!-- CTA et réseaux sociaux -->
+                <div class="px-6 pb-8 pt-4 bg-gray-700/30 rounded-b-2xl">
+                    <button onclick="ouvrirFormEcoleZed123()" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-[1.02] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mb-6">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        S'inscrire maintenant
+                    </button>
+                    
+                    <div class="flex justify-center space-x-6">
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="text-gray-400 hover:text-blue-400 transition-colors duration-200 focus:outline-none p-2">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="text-gray-400 hover:text-blue-400 transition-colors duration-200 focus:outline-none p-2">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:text-blue-400 transition-colors duration-200 focus:outline-none p-2">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background with gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600"></div>
+        <div class="absolute inset-0 bg-black/20"></div>
+
+        <!-- Animated background elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse"
+                style="animation-delay: 2s;"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 fade-in-up">
+                    Former aujourd'hui,<br>
+                    <span class="text-yellow-400">inspirer demain</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-2xl mx-auto fade-in-up">
+                    Chaque idée devient un projet, chaque projet un impact réel.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
+                    <a href="#formations">
+                    <button
+                        class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
+                        Découvrir les formations
+                    </button>
+                     </a>
+                    <button  onclick="ouvrirFormEcoleZed123()"
+                    class="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
+                        Rejoindre l'académie
+                    </button>
+                   
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <a href="#apropos" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce focus:outline-none" aria-label="Aller à la section suivante">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-left">
+                    <div
+                        class="w-full h-96 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-users text-white text-6xl" aria-hidden="true"></i>
+                            <span class="sr-only">Équipe de l'académie</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in-right">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        L'Académie des Visionnaires
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Nous croyons que chaque jeune porte en lui le potentiel de transformer le monde.
+                        Notre mission est de révéler et développer ces talents à travers des formations
+                        innovantes et un accompagnement personnalisé.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Depuis notre création, nous avons formé plus de 500 jeunes leaders qui façonnent
+                        aujourd'hui l'avenir dans leurs domaines respectifs.
+                    </p>
+                    <button
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        En savoir plus
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations Section -->
+    <section id="formations" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Nos formations phares
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Découvrez nos programmes conçus pour développer vos compétences et révéler votre potentiel de
+                    leader.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Formation 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in-up">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-crown text-white text-4xl" aria-hidden="true"></i>
+                            <span class="sr-only">Icône de couronne pour le leadership</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-gray-900 mb-3">Leadership Transformationnel</h3>
+                        <p class="text-gray-600 mb-4">Développez votre capacité à inspirer et diriger avec authenticité.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                            <i class="fas fa-video" aria-hidden="true"></i>
+                            <span>Vidéo</span>
+                            <i class="fas fa-file-pdf ml-2" aria-hidden="true"></i>
+                            <span>PDF</span>
+                            <i class="fas fa-headphones ml-2" aria-hidden="true"></i>
+                            <span>Audio</span>
+                        </div>
+                        <button
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Voir le détail
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in-up"
+                    style="animation-delay: 0.2s;">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 relative">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-white text-4xl" aria-hidden="true"></i>
+                            <span class="sr-only">Icône de graphique pour l'éducation financière</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-gray-900 mb-3">Éducation Financière</h3>
+                        <p class="text-gray-600 mb-4">Maîtrisez les fondamentaux de la gestion financière personnelle.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                            <i class="fas fa-video" aria-hidden="true"></i>
+                            <span>Vidéo</span>
+                            <i class="fas fa-file-pdf ml-2" aria-hidden="true"></i>
+                            <span>PDF</span>
+                        </div>
+                        <button
+                            class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                            Voir le détail
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in-up"
+                    style="animation-delay: 0.4s;">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 relative">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-users text-white text-4xl" aria-hidden="true"></i>
+                            <span class="sr-only">Icône de personnes pour les compétences sociales</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-gray-900 mb-3">Compétences Sociales</h3>
+                        <p class="text-gray-600 mb-4">Renforcez votre communication et vos relations interpersonnelles.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                            <i class="fas fa-video" aria-hidden="true"></i>
+                            <span>Vidéo</span>
+                            <i class="fas fa-headphones ml-2" aria-hidden="true"></i>
+                            <span>Audio</span>
+                        </div>
+                        <button
+                            class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
+                            Voir le détail
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote/Idea of the Day Section -->
+    <section class="py-20 bg-blue-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-800"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center fade-in-up">
+                <div class="mb-8">
+                    <i class="fas fa-quote-left text-4xl text-yellow-400 mb-6" aria-hidden="true"></i>
+                    <span class="sr-only">Citation</span>
+                </div>
+                <blockquote class="font-display text-2xl md:text-3xl font-medium mb-8 leading-relaxed">
+                    "Le leadership n'est pas une position ou un titre, c'est l'action et l'exemple."
+                </blockquote>
+                <cite class="text-blue-200 text-lg">— Citation inspirante du jour</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="témoignages" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Témoignages récents
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Découvrez ce que nos étudiants disent de leur expérience à l'AJD
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 rounded-2xl p-6 fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                            M
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-900">Marie Dubois</h4>
+                            <p class="text-sm text-gray-600">Leadership Transformationnel</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Cette formation a complètement transformé ma vision du leadership.
+                        Les outils pratiques m'ont permis de prendre confiance en moi."
+                    </p>
+                    <div class="flex text-yellow-400 mt-4" aria-label="5 étoiles">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 rounded-2xl p-6 fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">
+                            J
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-900">Jean Martin</h4>
+                            <p class="text-sm text-gray-600">Éducation Financière</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Enfin une formation claire sur les finances personnelles !
+                        J'ai pu créer mon premier budget et planifier mes investissements."
+                    </p>
+                    <div class="flex text-yellow-400 mt-4" aria-label="5 étoiles">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 rounded-2xl p-6 fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                            A
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-900">Anna Koné</h4>
+                            <p class="text-sm text-gray-600">Compétences Sociales</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Mes relations professionnelles et personnelles se sont grandement améliorées.
+                        Une formation que je recommande vivement !"
+                    </p>
+                    <div class="flex text-yellow-400 mt-4" aria-label="5 étoiles">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-blue-600 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="fade-in-up">
+                    <div class="text-4xl md:text-5xl font-bold mb-2" id="counter1">500</div>
+                    <p class="text-blue-100 text-lg">Jeunes formés</p>
+                </div>
+                <div class="fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="text-4xl md:text-5xl font-bold mb-2" id="counter2">20</div>
+                    <p class="text-blue-100 text-lg">Programmes actifs</p>
+                </div>
+                <div class="fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="text-4xl md:text-5xl font-bold mb-2" id="counter3">95</div>
+                    <p class="text-blue-100 text-lg">% de satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Blog des visionnaires
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Découvrez nos derniers articles et conseils pour votre développement personnel
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in-up">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 relative">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-lightbulb text-white text-4xl" aria-hidden="true"></i>
+                            <span class="sr-only">Icône d'ampoule pour les idées</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Leadership</span>
+                            <span>5 min de lecture</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-gray-900 mb-3">
+                            Les 5 qualités d'un leader inspirant
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Découvrez les traits essentiels qui distinguent les vrais leaders et comment les
+                            développer...
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">
+                            Lire l'article
+                            <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in-up"
+                    style="animation-delay: 0.2s;">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 relative">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-piggy-bank text-white text-4xl" aria-hidden="true"></i>
+                            <span class="sr-only">Icône de tirelire pour les finances</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded">Finance</span>
+                            <span>8 min de lecture</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-gray-900 mb-3">
+                            Comment créer son premier budget
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Guide pratique pour maîtriser ses finances et commencer à épargner efficacement...
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">
+                            Lire l'article
+                            <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in-up"
+                    style="animation-delay: 0.4s;">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 relative">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-heart text-white text-4xl" aria-hidden="true"></i>
+                            <span class="sr-only">Icône de coeur pour l'intelligence émotionnelle</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded">Développement</span>
+                            <span>6 min de lecture</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-gray-900 mb-3">
+                            L'intelligence émotionnelle au travail
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Pourquoi l'intelligence émotionnelle est devenue une compétence clé dans le monde
+                            professionnel...
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">
+                            Lire l'article
+                            <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center fade-in-up">
+                <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">
+                    Rejoignez les visionnaires d'aujourd'hui pour créer le monde de demain
+                </h2>
+                <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                    Ne laissez pas passer cette opportunité de transformer votre potentiel en impact réel.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                   
+                    <button onclick="ouvrirFormEcoleZed123()"
+                        class="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
+                        S'inscrire à une formation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto text-center fade-in-up">
+                <h2 class="font-display text-3xl font-bold text-gray-900 mb-4">
+                    Restez inspiré
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Recevez nos conseils exclusifs et les dernières actualités de l'académie directement dans votre
+                    boîte mail.
+                </p>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" id="newsletter-form">
+                    <input type="email" placeholder="Votre adresse email"
+                        class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                        required aria-label="Votre adresse email">
+                    <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        S'abonner
+                    </button>
+                </form>
+                <p class="text-sm text-gray-500 mt-4">
+                    Pas de spam, désabonnement facile à tout moment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Contactez-nous
+                    </h2>
+                    <p class="text-lg text-gray-600">
+                        Une question ? Un projet ? Nous sommes là pour vous accompagner.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="fade-in-left">
+                        <form class="space-y-6" id="contact-form">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstname" class="block text-sm font-medium text-gray-700 mb-2">Prénom</label>
+                                    <input type="text" id="firstname"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                        required>
+                                </div>
+                                <div>
+                                    <label for="lastname" class="block text-sm font-medium text-gray-700 mb-2">Nom</label>
+                                    <input type="text" id="lastname"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                        required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Objet</label>
+                                <select id="subject"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                                    <option>Demande d'information</option>
+                                    <option>Inscription formation</option>
+                                    <option>Partenariat</option>
+                                    <option>Support technique</option>
+                                    <option>Autre</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <textarea id="message" rows="5"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+                                    placeholder="Décrivez votre demande..." required></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="fade-in-right">
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-gray-900 mb-4">
+                                    Informations de contact
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-envelope text-blue-600" aria-hidden="true"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-gray-900">Email</p>
+                                            <p class="text-gray-600">contact@ajd-academie.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-phone text-green-600" aria-hidden="true"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-gray-900">Téléphone</p>
+                                            <p class="text-gray-600">+509 3456-7890</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                            <i class="fab fa-facebook text-purple-600" aria-hidden="true"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-gray-900">Facebook Messenger</p>
+                                            <p class="text-gray-600">Chat en direct disponible</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-gray-900 mb-4">
+                                    Horaires de réponse
+                                </h3>
+                                <div class="space-y-2 text-gray-600">
+                                    <p><span class="font-medium">Lundi - Vendredi:</span> 8h00 - 18h00</p>
+                                    <p><span class="font-medium">Samedi:</span> 9h00 - 15h00</p>
+                                    <p><span class="font-medium">Dimanche:</span> Fermé</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-50 rounded-2xl p-6">
+                                <h4 class="font-bold text-gray-900 mb-3">Réponse rapide garantie</h4>
+                                <p class="text-gray-600">
+                                    Nous nous engageons à répondre à tous les messages dans un délai de 24h maximum.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-brain text-white text-lg" aria-hidden="true"></i>
+                        </div>
+                        <span class="font-display font-bold text-xl">AJD</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        L'Académie des Visionnaires - Former aujourd'hui, inspirer demain.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white" aria-label="Facebook">
+                            <i class="fab fa-facebook text-xl" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white" aria-label="Twitter">
+                            <i class="fab fa-twitter text-xl" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin text-xl" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white" aria-label="YouTube">
+                            <i class="fab fa-youtube text-xl" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Accueil</a></li>
+                        <li><a href="#apropos" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">À propos</a></li>
+                        <li><a href="#formations" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Formations</a></li>
+                        <li><a href="#témoignages" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Témoignages</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Blog</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Formations -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Formations</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Leadership</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Éducation Financière</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Compétences Sociales</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Développement Personnel</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Communication</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-gray-400" aria-hidden="true"></i>
+                            <span class="text-gray-400">contact@ajd-academie.com</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-phone text-gray-400" aria-hidden="true"></i>
+                            <span class="text-gray-400">+509 3456-7890</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt text-gray-400" aria-hidden="true"></i>
+                            <span class="text-gray-400">Port-au-Prince, Haïti</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="flex flex-wrap gap-6 text-sm text-gray-400">
+                        <a href="#" class="hover:text-white transition-colors focus:outline-none focus:text-white">Mentions légales</a>
+                        <a href="#" class="hover:text-white transition-colors focus:outline-none focus:text-white">CGV</a>
+                        <a href="#" class="hover:text-white transition-colors focus:outline-none focus:text-white">Politique de confidentialité</a>
+                    </div>
+                    <div class="text-sm text-gray-400">
+                        © 2025 AJD - Académie des Visionnaires. Tous droits réservés.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top"
+        class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-40 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+        aria-label="Retour en haut de page">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+
+    <!-- cmd -->
+   
+  <!-- Formulaire Modal -->
+ <!-- Modal -->
+  <div 
+    id="formEcoleModalZed123" 
+    class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center transition-opacity duration-300"
+    role="dialog" aria-modal="true"
+  >
+    <div 
+      id="modalContentZed123"
+      class="bg-white rounded-lg shadow-lg w-full max-w-md mx-4 sm:mx-auto relative overflow-y-auto max-h-[90vh] p-6 sm:p-8 scale-95 opacity-0 transition duration-300 transform"
+    >
+      <!-- Bouton de fermeture -->
+      <button 
+        onclick="fermerFormEcoleZed123()" 
+        class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl"
+        aria-label="Fermer le formulaire"
+      >
+        ✕
+      </button>
+
+      <h2 class="text-xl sm:text-2xl font-bold mb-6 text-center text-blue-700">
+        Formulaire d'inscription
+      </h2>
+
+      <!-- Formulaire -->
+      <form id="formulaireInscriptionEcoleZed123" class="space-y-4">
+
+        <div class="flex flex-col sm:flex-row sm:gap-4">
+          <div class="flex-1">
+            <label for="prenomEcoleZed123" class="block text-sm font-medium">Prénom</label>
+            <input type="text" id="prenomEcoleZed123" class="mt-1 w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" autocomplete="given-name">
+          </div>
+          <div class="flex-1 mt-4 sm:mt-0">
+            <label for="nomEcoleZed123" class="block text-sm font-medium">Nom</label>
+            <input type="text" id="nomEcoleZed123" class="mt-1 w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" autocomplete="family-name">
+          </div>
+        </div>
+
+        <div>
+          <label for="emailEcoleZed123" class="block text-sm font-medium">Email</label>
+          <input type="email" id="emailEcoleZed123" class="mt-1 w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" autocomplete="email" inputmode="email">
+        </div>
+
+        <div>
+          <label for="telephoneEcoleZed123" class="block text-sm font-medium">Téléphone</label>
+          <input type="tel" id="telephoneEcoleZed123" class="mt-1 w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" autocomplete="tel" inputmode="tel">
+        </div>
+
+        <div>
+          <label for="niveauEtudeEcoleZed123" class="block text-sm font-medium">Niveau d'études</label>
+          <select id="niveauEtudeEcoleZed123" class="mt-1 w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">-- Sélectionner --</option>
+            <option value="primaire">Primaire</option>
+            <option value="college">Collège</option>
+            <option value="lycee">Lycée</option>
+            <option value="universite">Université</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="mdpEcoleZed123" class="block text-sm font-medium">Mot de passe</label>
+          <input type="password" id="mdpEcoleZed123" class="mt-1 w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" autocomplete="new-password">
+        </div>
+
+        <!-- Zone de feedback -->
+        <div id="msgFeedback"></div>
+
+        <button 
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          S'inscrire
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function ouvrirFormEcoleZed123() {
+      const modal = document.getElementById('formEcoleModalZed123');
+      const content = document.getElementById('modalContentZed123');
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+
+      setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+        document.getElementById('prenomEcoleZed123').focus();
+      }, 10);
+
+      // Fermer si clic hors du formulaire
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+          fermerFormEcoleZed123();
+        }
+      }, { once: true });
+    }
+
+    function fermerFormEcoleZed123() {
+      const content = document.getElementById('modalContentZed123');
+      content.classList.add('scale-95', 'opacity-0');
+      content.classList.remove('scale-100', 'opacity-100');
+
+      setTimeout(() => {
+        document.getElementById('formEcoleModalZed123').classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }, 300);
+    }
+
+    // Validation & feedback UX
+    document.getElementById('formulaireInscriptionEcoleZed123').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const champs = ['prenomEcoleZed123', 'nomEcoleZed123', 'emailEcoleZed123', 'telephoneEcoleZed123', 'niveauEtudeEcoleZed123', 'mdpEcoleZed123'];
+      let valide = true;
+
+      champs.forEach(id => {
+        const champ = document.getElementById(id);
+        if (!champ.value.trim()) {
+          champ.classList.add('border-red-500');
+          valide = false;
+        } else {
+          champ.classList.remove('border-red-500');
+        }
+      });
+
+      if (!valide) {
+        afficherMessage("Veuillez remplir tous les champs.", "error");
+        return;
+      }
+
+      afficherMessage("Inscription réussie !", "success");
+      setTimeout(() => fermerFormEcoleZed123(), 2000);
+    });
+
+    function afficherMessage(message, type) {
+      const container = document.getElementById('msgFeedback');
+      container.innerText = message;
+      container.className = `text-sm text-center mt-2 font-medium ${type === "error" ? 'text-red-600' : 'text-green-600'}`;
+    }
+  </script>
+
+
+
+    <script>
+        // Gestion du menu mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        function toggleMobileMenu() {
+            const isOpen = mobileMenu.classList.toggle('hidden');
+            if (!isOpen) {
+                mobileMenuOverlay.classList.add('opacity-75');
+                mobileMenuOverlay.classList.remove('opacity-0');
+                mobileMenuPanel.classList.remove('translate-x-full');
+                document.body.classList.add('overflow-hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                mobileMenuOverlay.classList.remove('opacity-75');
+                mobileMenuOverlay.classList.add('opacity-0');
+                mobileMenuPanel.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileMenuClose.addEventListener('click', toggleMobileMenu);
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+        
+        // Animation du header au scroll
+        let lastScroll = 0;
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                header.classList.remove('shadow-lg');
+                header.classList.add('shadow-sm');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scroll down
+                header.classList.add('-translate-y-full');
+            } else {
+                // Scroll up
+                header.classList.remove('-translate-y-full');
+                if (currentScroll > 10) {
+                    header.classList.add('shadow-lg');
+                    header.classList.remove('shadow-sm');
+                } else {
+                    header.classList.remove('shadow-lg');
+                    header.classList.add('shadow-sm');
+                }
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.remove('opacity-0', 'invisible');
+            } else {
+                scrollTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submissions
+        const newsletterForm = document.getElementById('newsletter-form');
+        const contactForm = document.getElementById('contact-form');
+
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+
+            // Simulate form submission
+            const button = e.target.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Inscription...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.textContent = 'Inscrit ✓';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    e.target.reset();
+                }, 2000);
+            }, 1000);
+        });
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Simulate form submission
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Envoi en cours...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.textContent = 'Message envoyé ✓';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    e.target.reset();
+                }, 2000);
+            }, 1000);
+        });
+
+        // Animated counters
+        function animateCounter(element, target, duration = 2000) {
+            let current = 0;
+            const increment = target / (duration / 16);
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + (target === 95 ? '%' : '+');
+            }, 16);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate counters
+                    if (entry.target.id === 'counter1') {
+                        animateCounter(entry.target, 500);
+                    } else if (entry.target.id === 'counter2') {
+                        animateCounter(entry.target, 20);
+                    } else if (entry.target.id === 'counter3') {
+                        animateCounter(entry.target, 95);
+                    }
+
+                    // Animate other elements
+                    if (entry.target.classList.contains('fade-in-up')) {
+                        anime({
+                            targets: entry.target,
+                            opacity: [0, 1],
+                            translateY: [20, 0],
+                            duration: 800,
+                            easing: 'easeOutQuad'
+                        });
+                    }
+
+                    if (entry.target.classList.contains('fade-in-left')) {
+                        anime({
+                            targets: entry.target,
+                            opacity: [0, 1],
+                            translateX: [-20, 0],
+                            duration: 800,
+                            easing: 'easeOutQuad'
+                        });
+                    }
+
+                    if (entry.target.classList.contains('fade-in-right')) {
+                        anime({
+                            targets: entry.target,
+                            opacity: [0, 1],
+                            translateX: [20, 0],
+                            duration: 800,
+                            easing: 'easeOutQuad'
+                        });
+                    }
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, #counter1, #counter2, #counter3').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, this.getAttribute('href'));
+                    } else {
+                        location.hash = this.getAttribute('href');
+                    }
+                }
+            });
+        });
+
+        // Initial page load animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate hero content
+            anime.timeline({
+                easing: 'easeOutQuad'
+            })
+            .add({
+                targets: '.fade-in-up',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 800,
+                delay: anime.stagger(200)
+            });
+        });
+    </script>
+</body>
+</html>
